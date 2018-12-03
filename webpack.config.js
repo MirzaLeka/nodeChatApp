@@ -22,7 +22,7 @@ module.exports = (env) => {
         test: /\.js$/, 
         exclude: /node_modules/, 
         query: { 
-          presets: ['es2015', 'es2016', 'es2017', 'react', 'env'] 
+          presets: ['env', 'react'] 
         }
       }, {
         test: /\.s?css$/,
@@ -105,6 +105,15 @@ module.exports = (env) => {
         },
         inject: false,
         template: path.join(__dirname, '/Web/error.html'), 
+      }),
+      new HtmlWebpackPlugin({ 
+        filename: 'login.html',
+        minify: { 
+          collapseWhitespace: true, 
+          removeComments: true
+        },
+        inject: false,
+        template: path.join(__dirname, '/Web/login.html'), 
       }),
     ]
   };
