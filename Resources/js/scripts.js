@@ -8,6 +8,11 @@ const socket = io();
 
 socket.on('connect', () => { 
   console.log('connected to the server'); // event name, callback function
+
+  socket.emit('createMessage', {
+    from: 'Mirza',
+    text: 'Yup, that works for me' 
+  });
 });
 
 socket.on('disconnect', () => {
@@ -15,4 +20,6 @@ socket.on('disconnect', () => {
 });
 
 
-document.body.style.background = 'black';
+socket.on('newMessage', (message) => {
+  console.log('newMessage', message);
+});

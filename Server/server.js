@@ -27,6 +27,15 @@ app.use(controller);
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+  socket.emit('newMessage', {
+    from: 'Mike',
+    text: 'See you then',
+    createdAt: new Date().getDate()
+  });
+
+  socket.on('createMessage', (message) => {
+    console.log('createMessage', message);
+  });
 
   // Disconnecting
   socket.on('disconnect', () => {
