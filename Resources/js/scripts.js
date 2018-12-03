@@ -2,7 +2,17 @@
 // import { sayHello } from './home';
 import '../sass/styles.scss';
 import 'normalize.css/normalize.css';
+import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
 
-fetch('/users').then(res => res.json()).then(data => console.log(data));
+const socket = io();
 
-document.body.style.background = 'darkblue';
+socket.on('connect', () => { 
+  console.log('connected to the server'); // event name, callback function
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected form server');
+});
+
+
+document.body.style.background = 'black';
