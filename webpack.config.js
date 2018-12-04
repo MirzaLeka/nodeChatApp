@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack'); 
+// const webpack = require('webpack'); 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
@@ -7,13 +7,17 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env) => {
   
   const isProduction = env === 'production'; 
-  const CSSExtract = new MiniCssExtractPlugin({ filename: 'styles.css' });
+  const homeCSSExtract = new MiniCssExtractPlugin('css/[home].css');
+  const loginCSSExtract = new MiniCssExtractPlugin('css/[login].css');
 
   return {
-    entry: path.join(__dirname, '/Resources/js/scripts.js'), 
+    entry: {
+      home: path.join(__dirname, '/Resources/js/scripts.js'),
+      login: path.join(__dirname, '/Resources/js/login.js')
+    }, 
     output: {
       path: path.join(__dirname, '/Resources/dist'), 
-      filename: 'bundle.js'
+      filename: '[name].bundle.js'
     },
     mode: isProduction ? 'production' : 'development', 
     module: {
@@ -30,7 +34,7 @@ module.exports = (env) => {
           MiniCssExtractPlugin.loader, 
           {
             loader: 'css-loader', 
-            options: { 
+            options: {
               sourceMap: true
             }
           },
@@ -83,11 +87,8 @@ module.exports = (env) => {
       open: true, 
     },
     plugins: [
-      CSSExtract, 
-      new webpack.ProvidePlugin({ 
-        $: 'jquery',
-        jQuery: 'jquery'
-      }), 
+      homeCSSExtract,
+      loginCSSExtract, 
       new HtmlWebpackPlugin({ 
         filename: 'index.html', 
         minify: { 
