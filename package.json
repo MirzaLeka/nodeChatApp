@@ -4,12 +4,13 @@
   "description": "\"NodeJS Chat App\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production --env production",
     "dev-server:dev": "webpack-dev-server --env development",
-    "dev-server:prod": "webpack-dev-server --env production"
+    "dev-server:prod": "webpack-dev-server --env production",
+    "test": " mocha \"./{,!(node_modules)/**/}*.test.js\" ",
+    "test-watch": "nodemon --exec \"npm test\""
   },
   "author": "\"Mirza Leka\"",
   "license": "ISC",
@@ -46,6 +47,8 @@
     "webpack-dev-server": "^3.1.10"
   },
   "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^5.2.0",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.7",
     "sass": "^1.15.1",
