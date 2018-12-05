@@ -37,3 +37,27 @@ document.messageForm.addEventListener('submit', (e) => {
 
   });
 });
+
+
+const locationBtn = document.querySelector('#locationBtn');
+
+locationBtn.addEventListener('click', () => {
+
+  // check if browser supports navigator object
+  if (!navigator.geolocation) {
+    alert('Geolocation not supported your browser');
+  }
+
+  // fetching user's position
+  navigator.geolocation.getCurrentPosition((position) => {
+
+    socket.emit('createLocationMessage', {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    });
+  
+  }, () => {
+    alert('Unable to fetch location'); // Error case => When user clicks Deny on pop-up
+  });
+
+});
