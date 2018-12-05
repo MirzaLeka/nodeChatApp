@@ -11,10 +11,6 @@ say();
 socket.on('connect', () => { 
   console.log('connected to the server'); // event name, callback function
 
-  socket.emit('createMessage', {
-    from: 'Mirza',
-    text: 'Yup, that works for me' 
-  });
 });
 
 socket.on('disconnect', () => {
