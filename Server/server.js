@@ -6,7 +6,7 @@ const http = require('http');
 
 // File imports
 const controller = require('./Controller/routes');
-const { generateMessage } = require('./Tests/message');
+const { generateMessage, generateLocationMessage } = require('./Tests/message');
 
 // Quick setup
 const app = express();
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('createLocationMessage', (coords) => {
-    io.emit('newMessage', generateMessage('Admin', `${coords.latitude}, ${coords.longitude}`));
+    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
   });
 
   socket.on('disconnect', () => {
