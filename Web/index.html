@@ -8,17 +8,27 @@
     <link rel="stylesheet" type="text/css" href="home.css">
 
 </head>
-<body>
+<body class="chat">
 
-    <h1>Welcome to home page</h1>
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
 
-    <ul name='messagesList'></ul>
+    <div class="chat__main">
+        <ul class="chat__messages" id="messages" name='messagesList'></ul>
 
-    <form name='messageForm'>
-        <input type='text' name='message' placeholder="Nessage"/>
-        <input type='submit' value='Send'/>
-    </form>
-    <button id="locationBtn">Send Location</button>
+        <div class="chat__footer">
+
+        <form name='messageForm'>
+            <input type='text' name='message' placeholder="Nessage" autofocus autocomplete="off"/>
+            <button>Send</button>
+        </form>
+        <button id="locationBtn">Send Location</button>
+
+        </div>
+   
+    </div>
 
  
     <script src="home.bundle.js"></script>
