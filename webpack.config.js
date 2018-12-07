@@ -9,11 +9,13 @@ module.exports = (env) => {
   const isProduction = env === 'production'; 
   const homeCSSExtract = new MiniCssExtractPlugin('css/[home].css');
   const loginCSSExtract = new MiniCssExtractPlugin('css/[login].css');
+  const errorCSSEXtract = new MiniCssExtractPlugin('css/[error].css');
 
   return {
     entry: {
       home: path.join(__dirname, '/Resources/js/scripts.js'),
-      login: path.join(__dirname, '/Resources/js/login.js')
+      login: path.join(__dirname, '/Resources/js/login.js'),
+      error: path.join(__dirname, '/Resources/js/error.js')
     }, 
     output: {
       path: path.join(__dirname, '/Resources/dist'), 
@@ -89,6 +91,7 @@ module.exports = (env) => {
     plugins: [
       homeCSSExtract,
       loginCSSExtract, 
+      errorCSSEXtract,
       new HtmlWebpackPlugin({ 
         filename: 'index.html', 
         minify: { 

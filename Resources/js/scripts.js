@@ -1,6 +1,6 @@
 
-import '../sass/styles.scss';
 import 'normalize.css/normalize.css';
+import '../sass/styles.scss';
 import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
 import moment from 'moment'; // importing moment to the client side
 
