@@ -6,7 +6,7 @@ const http = require('http');
 
 // File imports
 const controller = require('./Controller/routes');
-const { generateMessage, generateLocationMessage } = require('./Tests/message');
+const { generateMessage, generateLocationMessage } = require('./Utils/message');
 
 // Quick setup
 const app = express();

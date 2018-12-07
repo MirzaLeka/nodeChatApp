@@ -2,6 +2,7 @@
 import '../sass/styles.scss';
 import 'normalize.css/normalize.css';
 import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
+import moment from 'moment'; // importing moment to the client side
 
 const socket = io();
 
@@ -16,9 +17,11 @@ socket.on('disconnect', () => {
 
 
 socket.on('newMessage', (message) => {
-  console.log('newMessage', message);
+
+  const formattedTime = moment(message.createdAt).format('h:mm a');
+
   const li = document.createElement('li');
-  li.textContent = `${message.from} : ${message.text}`;
+  li.textContent = `${message.from} ${formattedTime}: ${message.text}`;
 
   document.querySelector('[name="messagesList"]').append(li);
 });
@@ -26,6 +29,10 @@ socket.on('newMessage', (message) => {
 
 document.messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  if (document.querySelector('#messageInput').value === '') {
+    return;
+  }
 
   const messageTextbox = document.messageForm.message;
 
@@ -40,6 +47,8 @@ document.messageForm.addEventListener('submit', (e) => {
 
 socket.on('newLocationMessage', (message) => {
 
+  const formattedTime = moment(message.createdAt).format('h:mm a');
+
   const li = document.createElement('li');
   const a = document.createElement('a');
 
@@ -47,7 +56,7 @@ socket.on('newLocationMessage', (message) => {
   a.setAttribute('target', '_blank');
   a.setAttribute('href', message.url);
 
-  li.textContent = `${message.from}: `;
+  li.textContent = `${message.from} ${formattedTime}: `;
   li.append(a);
 
   document.querySelector('[name="messagesList"]').append(li);
