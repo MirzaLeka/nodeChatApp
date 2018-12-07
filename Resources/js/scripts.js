@@ -18,10 +18,47 @@ socket.on('disconnect', () => {
 
 socket.on('newMessage', (message) => {
 
+//   <li class="message">
+//   <div class="message__title">
+//     <h4>{{from}}</h4>
+//     <span>{{createdAt}}</span>
+//   </div>
+//   <div class="message__body">
+//     <p>
+//       <a href="{{url}}" target="_blank">My current location</a>
+//     </p>
+//   </div>
+// </li>
+
+
   const formattedTime = moment(message.createdAt).format('h:mm a');
 
   const li = document.createElement('li');
-  li.textContent = `${message.from} ${formattedTime}: ${message.text}`;
+  li.classList = 'message';
+  
+  const div = document.createElement('div');
+  div.classList = 'message__title';
+
+  const h4 = document.createElement('h4');
+  h4.textContent = message.from;
+
+  const span = document.createElement('span');
+  span.textContent = formattedTime;
+
+  // appendings
+  li.append(div);
+  h4.append(span);
+  div.append(h4, span);
+
+
+  /*li.append(div);
+  div.append(h4, span);
+*/
+
+  // const body = document.createElement('div');
+
+
+  // li.textContent = `${message.from} ${formattedTime}: ${message.text}`;
 
   document.querySelector('[name="messagesList"]').append(li);
 });
