@@ -2,7 +2,7 @@
 import 'normalize.css/normalize.css';
 import '../sass/styles.scss';
 import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
-import moment from 'moment'; // importing moment to the client side
+import { generateMsg } from './generateMsg';
 
 const socket = io();
 
@@ -18,49 +18,10 @@ socket.on('disconnect', () => {
 
 socket.on('newMessage', (message) => {
 
-//   <li class="message">
-//   <div class="message__title">
-//     <h4>{{from}}</h4>
-//     <span>{{createdAt}}</span>
-//   </div>
-//   <div class="message__body">
-//     <p>
-//       <a href="{{url}}" target="_blank">My current location</a>
-//     </p>
-//   </div>
-// </li>
+  const li = generateMsg(message, true);
 
+  document.querySelector('#messages').append(li);
 
-  const formattedTime = moment(message.createdAt).format('h:mm a');
-
-  const li = document.createElement('li');
-  li.classList = 'message';
-  
-  const div = document.createElement('div');
-  div.classList = 'message__title';
-
-  const h4 = document.createElement('h4');
-  h4.textContent = message.from;
-
-  const span = document.createElement('span');
-  span.textContent = formattedTime;
-
-  // appendings
-  li.append(div);
-  h4.append(span);
-  div.append(h4, span);
-
-
-  /*li.append(div);
-  div.append(h4, span);
-*/
-
-  // const body = document.createElement('div');
-
-
-  // li.textContent = `${message.from} ${formattedTime}: ${message.text}`;
-
-  document.querySelector('[name="messagesList"]').append(li);
 });
 
 
@@ -84,19 +45,9 @@ document.messageForm.addEventListener('submit', (e) => {
 
 socket.on('newLocationMessage', (message) => {
 
-  const formattedTime = moment(message.createdAt).format('h:mm a');
+  const li = generateMsg(message, false);
 
-  const li = document.createElement('li');
-  const a = document.createElement('a');
-
-  a.textContent = 'My current location';
-  a.setAttribute('target', '_blank');
-  a.setAttribute('href', message.url);
-
-  li.textContent = `${message.from} ${formattedTime}: `;
-  li.append(a);
-
-  document.querySelector('[name="messagesList"]').append(li);
+  document.querySelector('#messages').append(li);
 
 });
 
