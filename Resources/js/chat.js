@@ -39,6 +39,23 @@ socket.on('disconnect', () => {
 });
 
 
+socket.on('updateUserList', (users) => {
+  const ol = document.createElement('ol');
+  const li = document.createElement(`li`);
+
+  users.forEach((user) => {
+    li.textContent = user;
+    ol.append(li);
+  });
+
+  // we don't want to update the list (append). We want to start from zero with each new user.
+   document.querySelector('#users').innerHTML = ol.outerHTML;
+  // document.querySelector('#users').appendChild(ol);
+  // console.log(ol);
+
+});
+
+
 socket.on('newMessage', (message) => {
 
   const li = generateMsg(message, true);

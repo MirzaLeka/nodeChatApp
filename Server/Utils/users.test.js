@@ -27,7 +27,7 @@ describe('Users', () => {
     var users = new Users();
     var user = {
       id: '123',
-      name: 'Andrew',
+      name: 'Mike',
       room: 'The Office Fans'
     };
     var resUser = users.addUser(user.id, user.name, user.room);
