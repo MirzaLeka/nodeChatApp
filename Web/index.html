@@ -2,35 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
-
+    <title>Join | Chat 4pp</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
 </head>
-<body class="chat">
+<body class="centered-form">
 
-    <div class="chat__sidebar">
-        <h3>People</h3>
-        <div id="users"></div>
-    </div>
+    <div class="centered-form__form">
+        <form action="/chat">
+            <div class="form-field">
+                <h3>Join a Chat</h3>
+            </div>
 
-    <div class="chat__main">
-        <ul class="chat__messages" id="messages" name='messagesList'></ul>
+            <div class="form-field">
+                <label>Display name</label>
+                <input type='text' name='name' autocomplete="off" autofocus />
+            </div>
 
-        <div class="chat__footer">
+            <div class="form-field">
+            <label>Room name</label>
+            <input type="text" name="room" />
+            </div>
 
-        <form name='messageForm'>
-            <input type='text' name='message' id="messageInput" placeholder="Nessage" autofocus autocomplete="off"/>
-            <button>Send</button>
+            <div class="form-field">
+                <button>Join</button>
+            </div>
+
         </form>
-        <button id="locationBtn">Send Location</button>
-
-        </div>
-   
     </div>
 
- 
-    <script src="home.bundle.js"></script>
+  
+    <script src="login.bundle.js"></script>
 </body>
 </html>

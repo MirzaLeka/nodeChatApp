@@ -1,6 +1,6 @@
 
 import 'normalize.css/normalize.css';
-import '../sass/styles.scss';
+import '../sass/chat.scss';
 import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
 import { generateMsg } from './generateMsg';
 
