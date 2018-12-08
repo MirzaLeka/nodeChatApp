@@ -15,7 +15,7 @@ I used NodeJS on backend and webpack for module bundling on client side. You can
 - HTML                  - CSS                  - Sass  
 - Javascript           - EcmaScript6+
 # Backend: 
-- NodeJS                - ExpressJS            - Web Sockets
+- NodeJS               - ExpressJS             - Web Sockets
 # Build tools:         
 - Webpack 4    
 # Unit testing:           

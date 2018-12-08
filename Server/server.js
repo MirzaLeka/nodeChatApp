@@ -30,12 +30,9 @@ app.use(controller);
 
 // Web Sockets 
 io.on('connection', (socket) => {
-  console.log('New user connected');
-
 
   socket.on('join', (params, callback) => {
-    console.log(params.name);
-    console.log(params.room);
+
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and room name are required');
     }
