@@ -1,13 +1,36 @@
 
 import 'normalize.css/normalize.css';
 import '../sass/chat.scss';
-import io from 'socket.io-client'; // came along with socket.io and installed using npmjs
+
+// import deparam from 'deparam';
+import io from 'socket.io-client'; // needs to be installed
+
 import { generateMsg } from './generateMsg';
+
 
 const socket = io();
 
 socket.on('connect', () => { 
-  console.log('connected to the server'); // event name, callback function
+  // const params = deparam(window.location.search); // turns query string into an object and removes query string symbols
+  // names of input tags in index.html are 'name' and 'room', so we'll have an object params with properties name and room
+
+
+  // deparams returns ? for name for unknoqn reason, so this is an alternative
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name');
+  const room = params.get('room');
+
+  params.name = name;
+  params.room = room;
+
+  socket.emit('join', params, (err) => {
+    if (err) {
+      alert(err); // This is for uuser
+      window.location.href = '/'; // if error, redirect to home page
+    } else {
+      console.log('No error');
+    }
+  });
 
 });
 
