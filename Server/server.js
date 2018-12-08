@@ -30,10 +30,6 @@ app.use(controller);
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-  socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
-
-  socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
-
 
   socket.on('join', (params, callback) => {
     console.log(params.name);
@@ -42,11 +38,19 @@ io.on('connection', (socket) => {
       callback('Name and room name are required');
     }
 
+    // joining room
+    socket.join(params.room); // expects string
+
+    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
+
+    // the following will be sent tho only those users who joined the room
+    socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`)); 
+
     callback();
   });
 
   socket.on('createMessage', (message, callback) => {
-    console.log('createMessage', message);
+    // console.log('createMessage', message);
     io.emit('newMessage', generateMessage(message.from, message.text));
 
     callback();
