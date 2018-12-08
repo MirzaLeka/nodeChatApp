@@ -28,7 +28,7 @@ socket.on('connect', () => {
       alert(err); // This is for uuser
       window.location.href = '/'; // if error, redirect to home page
     } else {
-      console.log('No error');
+      // console.log('No error');
     }
   });
 
@@ -49,7 +49,7 @@ socket.on('updateUserList', (users) => {
   });
 
   // we don't want to update the list (append). We want to start from zero with each new user.
-   document.querySelector('#users').innerHTML = ol.outerHTML;
+  document.querySelector('#users').innerHTML = ol.outerHTML;
   // document.querySelector('#users').appendChild(ol);
   // console.log(ol);
 
@@ -75,7 +75,6 @@ document.messageForm.addEventListener('submit', (e) => {
   const messageTextbox = document.messageForm.message;
 
   socket.emit('createMessage', {
-    from: 'User',
     text: messageTextbox.value
   }, () => {
     messageTextbox.value = '';
