@@ -4,11 +4,29 @@ import '../sass/chat.scss';
 
 // import deparam from 'deparam';
 import io from 'socket.io-client'; // needs to be installed
-
 import { generateMsg } from './generateMsg';
 
 
 const socket = io();
+
+function scrollToBottom() {
+
+  // Selectors
+  const messages = document.querySelector('#messages');
+  const newMessage = messages.children.lastChild;
+
+  // Heights
+  const clientHeight = messages.setAttribute('clientHeight', true);
+  const scrollTop = messages.setAttribute('scrollTop', true);
+  const scrollHeight = messages.setAttribute('scrollHeight', true);
+  const newMessageHeight = newMessage.innerHeight();
+  const lastMessageHeight = newMessage.previousElementSibling.innerHeight();
+
+  if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
+    console.log('Should scroll');
+  }
+
+}
 
 socket.on('connect', () => { 
   
@@ -49,6 +67,7 @@ socket.on('newMessage', (message) => {
   const li = generateMsg(message, true);
 
   document.querySelector('#messages').append(li);
+  // scrollToBottom();
 
 });
 
@@ -75,6 +94,7 @@ socket.on('newLocationMessage', (message) => {
   const li = generateMsg(message, false);
 
   document.querySelector('#messages').append(li);
+  // scrollToBottom();
 
 });
 

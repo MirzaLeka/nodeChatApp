@@ -1,13 +1,5 @@
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    font-size: .95rem;
-  }
+@import 'partials/commonStyles.scss';
 
 .centered-form {
     display: flex;
@@ -48,33 +40,4 @@
   .form-field input, .form-field select {
     border: 1px solid #e1e1e1;
     padding: 10px;
-  }
-
-
-  h3 {
-    font-weight: 600;
-    text-align: center;
-    font-size: 1.5rem;
-  }
-  
-
-  button {
-    border: none;
-    background: #265f82;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    transition: background .3s ease;
-  }
-  
-  button:hover {
-    border: none;
-    background: #1F4C69;
-    color: white;
-    padding: 10px;
-  }
-  
-  button:disabled {
-    cursor: default;
-    background: #698ea5;
   }

@@ -1,29 +1,11 @@
 
 @import 'partials/config.scss';
+@import 'partials/commonStyles.scss';
 
 body{
     @include flexCenter();
     height: 100vh;
-    background: lightblue;
-}
-
-button{
-    background: white;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    color: darkblue;
-    cursor: pointer;
-    opacity: 0.85;
-    width: 100px;
-
-    &:hover{
-        opacity: 1;
-    }
-
-    &:focus{
-        outline: 0;
-    }
+    background: #222;
 }
 
 h1{
