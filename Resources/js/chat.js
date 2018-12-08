@@ -11,11 +11,8 @@ import { generateMsg } from './generateMsg';
 const socket = io();
 
 socket.on('connect', () => { 
-  // const params = deparam(window.location.search); // turns query string into an object and removes query string symbols
-  // names of input tags in index.html are 'name' and 'room', so we'll have an object params with properties name and room
-
-
-  // deparams returns ? for name for unknoqn reason, so this is an alternative
+  
+  // the following turns query string into an object and removes query string symbols
   const params = new URLSearchParams(window.location.search);
   const name = params.get('name');
   const room = params.get('room');
@@ -40,18 +37,9 @@ socket.on('disconnect', () => {
 
 
 socket.on('updateUserList', (users) => {
-  const ol = document.createElement('ol');
-  const li = document.createElement(`li`);
 
-  users.forEach((user) => {
-    li.textContent = user;
-    ol.append(li);
-  });
-
-  // we don't want to update the list (append). We want to start from zero with each new user.
-  document.querySelector('#users').innerHTML = ol.outerHTML;
-  // document.querySelector('#users').appendChild(ol);
-  // console.log(ol);
+  const li = users.map(user => `<li>${user}</li>`).join('');
+  document.querySelector('#olList').innerHTML = li;
 
 });
 
