@@ -12,8 +12,10 @@
     "build:prod": "webpack --mode production --env production",
     "dev-server:dev": "webpack-dev-server --env development",
     "dev-server:prod": "webpack-dev-server --env production",
-    "clean": "rimraf ./Resources/dist",
-    "heroku-postbuild": "npm run build:prod"
+    "clean": "rimraf ./Resources/dist"
+  },
+  "engines": {
+    "node": "10.6.0"
   },
   "author": "\"Mirza Leka\"",
   "license": "ISC",
