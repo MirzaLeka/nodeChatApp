@@ -17,7 +17,7 @@ const io = socketIO(server);
 const users = new Users();
 
 // Port and path
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const distPath = path.join(__dirname, '../Resources/dist');
 
 
@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
     socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`)); 
 
     callback();
+
   });
 
   socket.on('createMessage', (message, callback) => {
@@ -63,8 +64,8 @@ io.on('connection', (socket) => {
       io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
     }
 
-
     callback();
+    
   });
 
   socket.on('createLocationMessage', (coords) => {
@@ -91,6 +92,6 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
