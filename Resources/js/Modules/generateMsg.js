@@ -1,5 +1,5 @@
 
-import moment from 'moment'; // importing moment to the client side
+import moment from 'moment'; 
 
 module.exports.generateMsg = (message, text) => {
 

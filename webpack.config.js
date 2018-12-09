@@ -1,5 +1,5 @@
 const path = require('path');
-// const webpack = require('webpack'); 
+const webpack = require('webpack'); 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
@@ -92,6 +92,10 @@ module.exports = (env) => {
       chatCSSExtract,
       loginCSSExtract, 
       errorCSSEXtract,
+      new webpack.ProvidePlugin({ 
+        $: 'jquery',
+        jQuery: 'jquery'
+      }), 
       new HtmlWebpackPlugin({ 
         filename: 'chat.html', 
         minify: { 
