@@ -2,7 +2,7 @@
 
 I love learning new technologies and for my latest project I choose to learn web sockets. As I was learning, I created this
 simple chat app. **Chat 4pp** allows users to create their own rooms, join other rooms and enjoy private chat.
-You can also send your current location to other users with Javascript navigator.
+Users can also share their current location with other users with Javascript navigator.
 
 ![](Resources/img/join.jpg)
 
@@ -20,7 +20,7 @@ I used NodeJS on backend and webpack for module bundling on client side. You can
 # Build tools:         
 - Webpack 4    
 # Unit testing:           
-- Mocha                 - Expect   
+- Mocha                - Expect   
 ``` 
 ![](Resources/img/chat.jpg)
 
@@ -31,11 +31,11 @@ I used NodeJS on backend and webpack for module bundling on client side. You can
 npm i
 
 # Run app
-npm run build:dev // creates dist folder
-npm start // starts the server on port 3000
+npm run build:dev # creates dist folder
+npm start # starts the server on port 3000
 
 # Close app
-npm run clean // cleans dist folder
+npm run clean # cleans dist folder
 
 # Prerequisites: 
 - NodeJS must be installed on your pc
