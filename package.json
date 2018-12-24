@@ -2,7 +2,7 @@
   "name": "nodechatapp",
   "version": "1.0.0",
   "description": "\"NodeJS Chat App\"",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "watch": "nodemon server/server",
