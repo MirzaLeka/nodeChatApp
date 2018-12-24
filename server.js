@@ -5,10 +5,10 @@ const socketIO = require('socket.io');
 const http = require('http');
 
 // File imports
-const controller = require('./Controller/routes');
-const { generateMessage, generateLocationMessage } = require('./Utils/message');
-const { isRealString } = require('./Utils/validation');
-const { Users } = require('./Utils/users');
+const controller = require('./Server/Controller/routes');
+const { generateMessage, generateLocationMessage } = require('./Server/Utils/message');
+const { isRealString } = require('./Server/Utils/validation');
+const { Users } = require('./Server/Utils/users');
 
 // Quick setup
 const app = express();
@@ -18,7 +18,7 @@ const users = new Users();
 
 // Port and path
 const port = process.env.PORT || 3000;
-const distPath = path.join(__dirname, '../Resources/dist');
+const distPath = path.join(__dirname, '/Resources/dist');
 
 
 // Middlewares 
