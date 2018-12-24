@@ -47,37 +47,7 @@ module.exports = (env) => {
             }
           }
         ]
-      }, {
-        test: /\.(png|gif|svg|jpe?g)$/i,
-        use: [
-          {
-            loader: 'file-loader', 
-            options: {
-              name: 'img/[name].[ext]', 
-            } 
-          },
-          {
-            loader: 'image-webpack-loader', 
-            options: {
-              gifsicle: { 
-                interlanced: false
-              },
-              optipng: { 
-                optimizationLevel: 7
-              },
-              pngquant: { 
-                quality: '65-90',
-                speed: 4
-              },
-              mozjpeg: { 
-                progressive: true,
-                quality: 65
-              }
-            }
-          }
-        ]
-      }
-      ]
+      }]
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map', 
     devServer: { 
