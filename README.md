@@ -2,9 +2,12 @@
 
 I love learning new technologies and for my latest project I choose to learn web sockets. As I was learning, I created this
 simple chat app. **Chat 4pp** allows users to create their own rooms, join other rooms and enjoy private chat.
-Users can also share their current location with other users with a help of Javascript navigator.
 
 ![](Resources/img/join.jpg)
+
+### *Extra features*
+* Share your location via Javascript navigator
+* Emojis
 
 #### *Tech stack*:
 

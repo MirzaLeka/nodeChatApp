@@ -6,6 +6,7 @@ import io from 'socket.io-client'; // needs to be installed
 import { generateMsg } from './Modules/generateMsg';
 import { autoScroll } from './Modules/autoScrolling';
 import { geoLocation } from './Modules/geoLocation';
+import { getEmoji } from './Modules/emojis';
 
 
 const socket = io();
@@ -59,6 +60,8 @@ document.messageForm.addEventListener('submit', (e) => {
   }
 
   const messageTextbox = document.messageForm.message;
+
+  messageTextbox.value = getEmoji(messageTextbox.value);
 
   socket.emit('createMessage', {
     text: messageTextbox.value

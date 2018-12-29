@@ -25,6 +25,7 @@
         "no-use-before-define": "off",
         "no-param-reassign": "off",
         "arrow-body-style": "off",
+        "no-extend-native": "off",
         "no-unused-vars": [
             "error",
             {
