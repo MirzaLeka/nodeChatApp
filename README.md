@@ -1,11 +1,17 @@
-### Chat 4pp
+## Chat 4pp
 
 I love learning new technologies and for my latest project I choose to learn web sockets. As I was learning, I created this
 simple chat app. **Chat 4pp** allows users to create their own rooms, join other rooms and enjoy private chat.
 
 ![](Resources/img/join.jpg)
 
-### *Extra features*
+------------------------
+### Give it a try
+Feel free to experience [app](https://chat4pp.herokuapp.com/) in first hand and send me your feedback!
+
+------------------------
+
+#### *Extra features*:
 * Share your location via Javascript navigator
 * Emojis
 
@@ -43,5 +49,3 @@ npm run clean # cleans dist folder
 # Prerequisites: 
 - NodeJS must be installed on your pc
 ```
-
-Feel free to experience [app](https://chat4pp.herokuapp.com/) in first hand and send me your feedback!
