@@ -14,26 +14,27 @@ router.get('/chat', (req, res) => {
 });
 
 router.get('/health', (req, res) => {
-  res.send({
+
+  const healthCheck = {
     appUptime: `${process.uptime().toFixed(2)}s`,
     message: 'OK',
     status: 200,
     OS: {
-      osType: os.type(),
-      hostname: os.hostname(),
-      architecture: os.arch(),
       platform: os.platform(),
-      version: os.version(),
-      release: os.release(),
       totalMemory: os.totalmem(),
       freeMemory: os.freemem(),
-      osUptime: os.uptime(),
       cpus: {
         size: os.cpus.length,
         cpus: os.cpus()
       },
     }
-  })
+  }
+
+  try {
+    res.send(healthCheck);
+  } catch(e) {
+    res.send({ message: e.message, status: e.status })
+  }
 });
 
 router.get('*', (req, res) => {
