@@ -1,7 +1,6 @@
 ## Chat 4pp
 
-I love learning new technologies and for my latest project I choose to learn web sockets. As I was learning, I created this
-simple chat app. **Chat 4pp** allows users to create their own rooms, join other rooms and enjoy private chat.
+Chat 4pp is a Node.js chat application powered by Socket.io. It allows users to create their own chat rooms, join other rooms and enjoy private chat. Aside from texting, users can share their location and express themselves with emojis.
 
 ![](Resources/img/join.jpg)
 
