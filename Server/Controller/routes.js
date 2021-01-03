@@ -23,9 +23,8 @@ router.get('/health', (req, res) => {
     },
     os: {
       platform: os.platform(),
-      version: os.version(),
-      totalMemory: `${(os.totalmem() / 1000000000).toFixed(2)}GB`,
-      freeMemory: `${(os.totalmem() / 1000000000).toFixed(2)}GB`,
+      totalMemory: `${os.totalmem()}B`,
+      freeMemory: `${os.freemem()}B`,
       cpus: os.cpus()
     }
   }
