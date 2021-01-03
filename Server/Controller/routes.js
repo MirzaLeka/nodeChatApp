@@ -16,17 +16,18 @@ router.get('/chat', (req, res) => {
 router.get('/health', (req, res) => {
 
   const healthCheck = {
-    appUptime: `${process.uptime().toFixed(2)}s`,
-    message: 'OK',
-    status: 200,
-    OS: {
+    app: {
+      uptime: `${process.uptime().toFixed(2)}s`,
+      message: 'OK',
+      status: 200,
+    },
+    os: {
       platform: os.platform(),
-      totalMemory: os.totalmem(),
-      freeMemory: os.freemem(),
-      cpus: {
-        size: os.cpus.length,
-        cpus: os.cpus()
-      },
+      architecture: os.arch(),
+      version: os.version(),
+      totalMemory: `${(os.totalmem() / 1000000000).toFixed(2)}GB`,
+      freeMemory: `${(os.totalmem() / 1000000000).toFixed(2)}GB`,
+      cpus: os.cpus()
     }
   }
 
